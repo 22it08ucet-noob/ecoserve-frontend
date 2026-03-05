@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoServe - B2B Eco-Friendly Packaging</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .card-gradient { background: linear-gradient(180deg,#ffffff 0%,#f0fdf4 100%); }
+    .new-card { background: linear-gradient(135deg,#f0fdf4,#dcfce7); }
+    .floating { animation: float 6s ease-in-out infinite; }
+    .floating-delay { animation: float 6s ease-in-out infinite; animation-delay: -3s; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    .slide-up { animation: slideUp 0.8s ease-out forwards; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(34,197,94,0.3)} 50%{box-shadow:0 0 40px rgba(34,197,94,0.6)} }
+    @keyframes modalIn { from{opacity:0;transform:translateY(20px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .modal-in { animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+    @keyframes stepIn { from{opacity:0;transform:translateX(14px)} to{opacity:1;transform:translateX(0)} }
+    .step-in { animation: stepIn 0.25s ease forwards; }
+    input::placeholder { color:rgba(255,255,255,0.3); }
+    input:focus { outline:none !important; border-color:#22c55e !important; box-shadow:0 0 0 3px rgba(34,197,94,0.15) !important; }
+    .bar-t { transition:width 0.4s ease; }
+    @keyframes bump { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+    .bump { animation:bump 0.22s ease; }
+  </style>
+</head>
+<body style="background:linear-gradient(135deg,#0d3320 0%,#1a5c3a 50%,#2d7a4e 100%);min-height:100vh;">
+
+<!-- NAV -->
+<nav class="px-6 py-4 flex items-center justify-between max-w-7xl mx-auto">
+  <div class="flex items-center gap-2">
+    <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:#22c55e;">
+      <svg class="w-6 h-6" style="color:#0d3320;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+    </div>
+    <span class="text-2xl font-bold" style="color:#fff;">Eco<span style="color:#22c55e;">Serve</span></span>
+  </div>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="#products" class="hover:opacity-80 transition" style="color:#bbf7d0;">Products</a>
+    <a href="#features" class="hover:opacity-80 transition" style="color:#bbf7d0;">Features</a>
+    <a href="#pricing"  class="hover:opacity-80 transition" style="color:#bbf7d0;">Pricing</a>
+    <a href="#orders"   class="hover:opacity-80 transition" style="color:#bbf7d0;">Orders</a>
+    <a href="#contact"  class="hover:opacity-80 transition" style="color:#bbf7d0;">Contact</a>
+  </div>
+  <div class="flex items-center gap-4">
+    <button id="nav-cta" class="px-6 py-2 rounded-full font-semibold transition hover:scale-105" style="background:#22c55e;color:#0d3320;">Get Started</button>
+    <div id="user-menu" class="hidden relative">
+      <button id="user-profile-btn" class="px-4 py-2 rounded-full font-semibold" style="background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid #22c55e;">
+        👤 <span id="user-name-display">User</span>
+      </button>
+      <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-lg shadow-xl" style="background:#1a5c3a;border:1px solid rgba(34,197,94,0.3);z-index:100;">
+        <a href="#" id="dashboard-link" class="block px-4 py-3 hover:opacity-80" style="color:#bbf7d0;border-bottom:1px solid rgba(34,197,94,0.3);">📊 My Dashboard</a>
+        <button id="logout-btn" class="w-full text-left px-4 py-3 hover:opacity-80" style="color:#ef4444;background:none;border:none;cursor:pointer;">🚪 Sign Out</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="px-6 py-16 md:py-24 max-w-7xl mx-auto">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="slide-up">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background:rgba(34,197,94,0.2);color:#22c55e;">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background:#22c55e;"></span>
+        <span class="text-sm font-medium">Trusted by 500+ Businesses</span>
+      </div>
+      <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight mb-6" style="color:#fff;">Eco-Friendly Packaging for Modern Businesses</h1>
+      <p class="text-lg mb-8 leading-relaxed" style="color:#bbf7d0;">Premium paper cups, boxes, carry bags &amp; more. Sustainable solutions for restaurants, bakeries, cloud kitchens, and juice shops across India.</p>
+      <div class="flex flex-wrap gap-4">
+        <button id="hero-cta" class="px-8 py-4 rounded-full font-bold text-lg transition hover:scale-105 pulse-glow" style="background:#22c55e;color:#0d3320;">Start Ordering Today</button>
+        <button class="px-8 py-4 rounded-full font-semibold text-lg border-2 transition hover:scale-105" style="border-color:#22c55e;color:#22c55e;background:transparent;">View Catalog</button>
+      </div>
+      <div class="flex items-center gap-6 mt-10">
+        <div class="flex -space-x-3">
+          <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm" style="background:#f97316;border-color:#0d3320;color:#fff;">R</div>
+          <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm" style="background:#3b82f6;border-color:#0d3320;color:#fff;">B</div>
+          <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm" style="background:#ec4899;border-color:#0d3320;color:#fff;">C</div>
+          <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm" style="background:#8b5cf6;border-color:#0d3320;color:#fff;">J</div>
+        </div>
+        <p class="text-sm" style="color:#bbf7d0;"><strong style="color:#fff;">4.9/5</strong> from 200+ reviews</p>
+      </div>
+    </div>
+    <div class="relative h-64 md:h-80">
+      <div class="floating absolute top-0 right-0 w-32 h-32 rounded-2xl shadow-2xl flex items-center justify-center" style="background:#fff;"><div class="text-center"><div class="text-4xl">☕</div><span class="text-xs font-semibold" style="color:#0d3320;">Paper Cups</span></div></div>
+      <div class="floating-delay absolute top-1/4 left-0 w-28 h-28 rounded-2xl shadow-2xl flex items-center justify-center" style="background:#fff;"><div class="text-center"><div class="text-3xl">📦</div><span class="text-xs font-semibold" style="color:#0d3320;">Boxes</span></div></div>
+      <div class="floating absolute bottom-1/4 right-8 w-28 h-28 rounded-2xl shadow-2xl flex items-center justify-center" style="background:#fff;"><div class="text-center"><div class="text-3xl">🛍️</div><span class="text-xs font-semibold" style="color:#0d3320;">Carry Bags</span></div></div>
+      <div class="floating-delay absolute bottom-0 left-1/4 w-24 h-24 rounded-2xl shadow-2xl flex items-center justify-center" style="background:#fff;"><div class="text-center"><div class="text-2xl">🥡</div><span class="text-xs font-semibold" style="color:#0d3320;">Containers</span></div></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="w-48 h-48 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 25px 50px -12px rgba(34,197,94,0.4);">
+          <div class="text-center" style="color:#fff;"><div class="text-5xl mb-2">🌱</div><span class="font-bold text-lg">100% Eco</span><span class="block text-sm opacity-90">Friendly</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="px-6 py-8" style="background:rgba(255,255,255,0.05);">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div><div class="text-4xl font-bold" style="color:#22c55e;">500+</div><div class="text-sm" style="color:#bbf7d0;">Happy Clients</div></div>
+    <div><div class="text-4xl font-bold" style="color:#22c55e;">50L+</div><div class="text-sm" style="color:#bbf7d0;">Units Delivered</div></div>
+    <div><div class="text-4xl font-bold" style="color:#22c55e;">15+</div><div class="text-sm" style="color:#bbf7d0;">Cities Covered</div></div>
+    <div><div class="text-4xl font-bold" style="color:#22c55e;">98%</div><div class="text-sm" style="color:#bbf7d0;">On-Time Delivery</div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color:#22c55e;">Our Products</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3" style="color:#fff;">Premium Eco-Friendly Packaging</h2>
+      <p class="mt-4 max-w-2xl mx-auto" style="color:#bbf7d0;">All products are biodegradable, food-safe certified, and available with custom branding options.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">☕</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Paper Cups</h3><p class="text-sm mb-4" style="color:#4b5563;">Single &amp; double wall. 80ml–500ml.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.80</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">📦</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Food Boxes</h3><p class="text-sm mb-4" style="color:#4b5563;">Meal, cake &amp; pizza boxes.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹3.50</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🛍️</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Carry Bags</h3><p class="text-sm mb-4" style="color:#4b5563;">Paper &amp; cloth, custom prints.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹2.00</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🥡</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Containers</h3><p class="text-sm mb-4" style="color:#4b5563;">Leak-proof for gravy, rice, salads.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹4.00</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🍴</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Cutlery</h3><p class="text-sm mb-4" style="color:#4b5563;">Biodegradable forks, spoons &amp; knives.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.50</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🥤</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Straws</h3><p class="text-sm mb-4" style="color:#4b5563;">Paper &amp; bamboo, compostable.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.30</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🏷️</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Labels &amp; Stickers</h3><p class="text-sm mb-4" style="color:#4b5563;">Custom printed, food-grade adhesive.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.40</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="card-gradient rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🧴</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Napkins &amp; Tissues</h3><p class="text-sm mb-4" style="color:#4b5563;">Premium quality, bulk rolls.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.25</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🍃</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Areca Leaf Plates</h3><p class="text-sm mb-4" style="color:#4b5563;">100% natural fallen palm leaf. Sturdy, water-resistant &amp; compostable in 60 days.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹5.50</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🎋</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Bamboo Toothpicks</h3><p class="text-sm mb-4" style="color:#4b5563;">FSC-certified bamboo. Splinter-free &amp; individually wrapped for hygiene.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹0.10</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🌽</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Corn-Starch Bags</h3><p class="text-sm mb-4" style="color:#4b5563;">PLA corn starch. Dissolves fully in 180 days. Zero microplastics.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹1.80</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🥣</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Sugarcane Bagasse Bowl</h3><p class="text-sm mb-4" style="color:#4b5563;">Pressed sugarcane fibre. Microwave safe, leakproof &amp; compostable.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹4.20</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🍯</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Beeswax Wraps</h3><p class="text-sm mb-4" style="color:#4b5563;">Organic cotton + beeswax. Reusable 200+ times. Replaces cling film.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹8.00</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+      <div class="new-card rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition"><div class="text-5xl mb-4">🌊</div><h3 class="font-bold text-xl mb-2" style="color:#0d3320;">Seaweed Sachets</h3><p class="text-sm mb-4" style="color:#4b5563;">Edible &amp; dissolvable seaweed packaging for sauces &amp; condiments.</p><span class="text-2xl font-bold" style="color:#16a34a;">₹2.60</span><span class="text-sm ml-1" style="color:#6b7280;">onwards/pc</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="px-6 py-16 md:py-24" style="background:rgba(255,255,255,0.03);">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color:#22c55e;">Why EcoServe</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3" style="color:#fff;">Built for Growing Businesses</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">💰</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">Smart Bulk Pricing</h3><p style="color:#bbf7d0;">Volume discounts calculated in real-time.</p></div>
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">🤖</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">AI Reorder Reminders</h3><p style="color:#bbf7d0;">Our AI predicts when you need to reorder.</p></div>
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">🚚</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">Reliable Delivery</h3><p style="color:#bbf7d0;">98% on-time delivery rate across India.</p></div>
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">🔒</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">Secure Payments</h3><p style="color:#bbf7d0;">UPI, Cards, Net Banking &amp; Credit Account.</p></div>
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">📄</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">Auto Invoicing</h3><p style="color:#bbf7d0;">GST-compliant invoices via Email &amp; WhatsApp.</p></div>
+      <div class="text-center p-6"><div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(34,197,94,0.2);"><span class="text-3xl">🎨</span></div><h3 class="font-bold text-xl mb-3" style="color:#fff;">Custom Branding</h3><p style="color:#bbf7d0;">Your logo &amp; colors printed on all products.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT OPTIONS -->
+<section id="pricing" class="px-6 py-16">
+  <div class="max-w-4xl mx-auto rounded-3xl p-8 md:p-12" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+    <div class="text-center mb-8">
+      <h2 class="font-display text-2xl md:text-3xl font-bold" style="color:#fff;">Flexible Payment Options</h2>
+      <p class="mt-2" style="color:#bbf7d0;">Choose what works best for your business</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="rounded-xl p-4 text-center" style="background:rgba(255,255,255,0.1);"><div class="text-3xl mb-2">📱</div><span class="font-semibold" style="color:#fff;">UPI</span></div>
+      <div class="rounded-xl p-4 text-center" style="background:rgba(255,255,255,0.1);"><div class="text-3xl mb-2">💳</div><span class="font-semibold" style="color:#fff;">Cards</span></div>
+      <div class="rounded-xl p-4 text-center" style="background:rgba(255,255,255,0.1);"><div class="text-3xl mb-2">🏦</div><span class="font-semibold" style="color:#fff;">Net Banking</span></div>
+      <div class="rounded-xl p-4 text-center" style="background:rgba(255,255,255,0.1);"><div class="text-3xl mb-2">📋</div><span class="font-semibold" style="color:#fff;">Credit Account</span></div>
+    </div>
+    <p class="text-center text-sm mt-6" style="color:#bbf7d0;">🔐 All transactions secured with PCI-DSS compliant payment gateways</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color:#22c55e;">Get In Touch</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3" style="color:#fff;">We're Here to Help</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <a href="tel:+91-9876543210" class="rounded-2xl p-6 text-center transition hover:scale-105" style="background:rgba(255,255,255,0.08);"><div class="text-4xl mb-3">📞</div><h3 class="font-bold mb-1" style="color:#fff;">Call Us</h3><p style="color:#22c55e;">+91-9876543210</p></a>
+      <a href="/cdn-cgi/l/email-protection#b6d5d9d8c2d7d5c2f6d3d5d9c5d3c4c0d398dfd8" class="rounded-2xl p-6 text-center transition hover:scale-105" style="background:rgba(255,255,255,0.08);"><div class="text-4xl mb-3">✉️</div><h3 class="font-bold mb-1" style="color:#fff;">Email Us</h3><p style="color:#22c55e;"><span class="__cf_email__" data-cfemail="6e0d01001a0f0d1a2e0b0d011d0b1c180b400700">[email&#160;protected]</span></p></a>
+      <div class="rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.08);"><div class="text-4xl mb-3">💬</div><h3 class="font-bold mb-2" style="color:#fff;">Follow Us</h3><a href="https://instagram.com/EcoServeOfficial" target="_blank" class="block hover:opacity-80 mb-2" style="color:#22c55e;">@EcoServeOfficial</a><a href="https://twitter.com/EcoServeB2B" target="_blank" class="block hover:opacity-80" style="color:#22c55e;">@EcoServeB2B</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDERS -->
+<section id="orders" class="px-6 py-16 md:py-24" style="background:rgba(255,255,255,0.03);">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color:#22c55e;">Quick Order</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3" style="color:#fff;">Place Your Order</h2>
+      <p class="mt-2" style="color:#bbf7d0;">Fill in your details and choose your payment method</p>
+    </div>
+
+    <div id="checkout-wrap" class="rounded-3xl p-8" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+
+      <!-- Business Details -->
+      <div class="mb-8">
+        <h3 class="font-bold text-lg mb-4" style="color:#fff;">Business Details</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Business Name *</label><input id="f-biz" type="text" placeholder="Your Restaurant/Business" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Contact Person *</label><input id="f-contact" type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Email *</label><input id="f-email" type="email" placeholder="your@email.com" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Phone *</label><input id="f-phone" type="tel" placeholder="+91-XXXXXXXXXX" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">City *</label><input id="f-city" type="text" placeholder="Your City" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+          <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">GST Number (Optional)</label><input id="f-gst" type="text" placeholder="GSTIN" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+        </div>
+      </div>
+
+      <!-- Product Selection — plain div, NOT inside any form -->
+      <div class="mb-8">
+        <h3 class="font-bold text-lg mb-4" style="color:#fff;">Select Products</h3>
+        <div id="product-grid" class="grid md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="mb-8">
+        <h3 class="font-bold text-lg mb-4" style="color:#fff;">Payment Method *</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="pay-opt rounded-lg border-2 p-4 text-center cursor-pointer transition" data-val="UPI" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);"><div class="text-2xl mb-1">📱</div><span style="color:#fff;">UPI</span></div>
+          <div class="pay-opt rounded-lg border-2 p-4 text-center cursor-pointer transition" data-val="Card" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);"><div class="text-2xl mb-1">💳</div><span style="color:#fff;">Card</span></div>
+          <div class="pay-opt rounded-lg border-2 p-4 text-center cursor-pointer transition" data-val="NetBanking" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);"><div class="text-2xl mb-1">🏦</div><span style="color:#fff;">NetBanking</span></div>
+          <div class="pay-opt rounded-lg border-2 p-4 text-center cursor-pointer transition" data-val="CreditAccount" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);"><div class="text-2xl mb-1">📋</div><span style="color:#fff;">Credit</span></div>
+        </div>
+      </div>
+
+      <!-- Live Summary -->
+      <div class="mb-8 rounded-2xl overflow-hidden" style="border:1px solid rgba(34,197,94,0.4);">
+        <div class="px-5 py-3 flex items-center gap-2" style="background:rgba(34,197,94,0.15);">
+          <span class="text-lg">🧾</span>
+          <h4 class="font-bold" style="color:#22c55e;">Live Order Summary</h4>
+        </div>
+        <div class="p-5" style="background:rgba(0,0,0,0.2);">
+          <div id="item-breakdown" class="space-y-1 mb-4">
+            <p id="empty-msg" class="text-sm italic" style="color:rgba(187,247,208,0.5);">No products selected yet…</p>
+          </div>
+          <div class="border-t pt-4 space-y-2" style="border-color:rgba(34,197,94,0.2);">
+            <div class="flex justify-between text-sm"><span style="color:#bbf7d0;">Subtotal</span><span id="sum-subtotal" style="color:#fff;font-weight:600;">₹0.00</span></div>
+            <div class="flex justify-between text-sm"><span style="color:#bbf7d0;">GST (18%)</span><span id="sum-gst" style="color:#fff;font-weight:600;">₹0.00</span></div>
+            <div id="sum-discount-row" class="hidden flex justify-between text-sm"><span style="color:#fbbf24;">🎉 Bulk Discount</span><span id="sum-discount" style="color:#fbbf24;font-weight:600;">-₹0.00</span></div>
+            <div class="border-t pt-2" style="border-color:rgba(34,197,94,0.2);">
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-bold" style="color:#fff;">Total</span>
+                <span id="sum-total" class="text-2xl font-bold" style="color:#22c55e;">₹0.00</span>
+              </div>
+            </div>
+          </div>
+          <div id="bulk-nudge" class="hidden mt-3 rounded-lg px-3 py-2 text-xs" style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);color:#fcd34d;"></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-4">
+        <button id="submit-order" class="flex-1 px-6 py-4 rounded-full font-bold text-lg transition hover:scale-105" style="background:#22c55e;color:#0d3320;">Proceed to Payment →</button>
+        <button id="clear-order" class="flex-1 px-6 py-4 rounded-full font-semibold text-lg border-2 transition hover:scale-105" style="border-color:#22c55e;color:#22c55e;background:transparent;">Clear</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div id="success-message" class="hidden rounded-3xl p-8 text-center" style="background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(22,163,74,0.2));border:1px solid rgba(34,197,94,0.5);">
+      <div class="text-6xl mb-4">✅</div>
+      <h3 class="font-display text-2xl font-bold mb-2" style="color:#22c55e;">Order Received!</h3>
+      <p class="mb-4" style="color:#bbf7d0;">Confirmation details sent to your email.</p>
+      <div id="order-details" class="text-left bg-black bg-opacity-30 rounded-lg p-4 mb-4 text-sm" style="color:#bbf7d0;"></div>
+      <button onclick="location.reload()" class="px-8 py-3 rounded-full font-bold" style="background:#22c55e;color:#0d3320;">Place Another Order</button>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="hidden px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold" style="color:#fff;">My Dashboard</h2>
+      <p style="color:#bbf7d0;">Welcome back! Here's your account overview.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="rounded-2xl p-6" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+        <h3 class="font-bold text-lg mb-4" style="color:#22c55e;">👤 Profile</h3>
+        <div class="space-y-3">
+          <div><span class="text-xs opacity-70" style="color:#bbf7d0;">Full Name</span><p id="db-name" class="font-semibold" style="color:#fff;"></p></div>
+          <div><span class="text-xs opacity-70" style="color:#bbf7d0;">Email</span><p id="db-email" class="font-semibold" style="color:#fff;"></p></div>
+          <div><span class="text-xs opacity-70" style="color:#bbf7d0;">Username</span><p id="db-username" class="font-semibold" style="color:#fff;"></p></div>
+          <div><span class="text-xs opacity-70" style="color:#bbf7d0;">Member Since</span><p id="db-since" class="font-semibold" style="color:#fff;"></p></div>
+        </div>
+      </div>
+      <div class="rounded-2xl p-6" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+        <h3 class="font-bold text-lg mb-4" style="color:#22c55e;">📊 Quick Stats</h3>
+        <div><p class="text-sm opacity-70" style="color:#bbf7d0;">Total Orders</p><p id="db-count" class="text-3xl font-bold" style="color:#22c55e;">0</p></div>
+        <div class="mt-4"><p class="text-sm opacity-70" style="color:#bbf7d0;">Total Spent</p><p id="db-spent" class="text-2xl font-bold" style="color:#22c55e;">₹0</p></div>
+      </div>
+      <div class="rounded-2xl p-6" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+        <h3 class="font-bold text-lg mb-4" style="color:#22c55e;">⚙️ Settings</h3>
+        <button class="w-full px-4 py-2 rounded-lg font-semibold mb-3 transition hover:opacity-80" style="background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid #22c55e;">✏️ Edit Profile</button>
+        <button class="w-full px-4 py-2 rounded-lg font-semibold transition hover:opacity-80" style="background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid #22c55e;">🔐 Change Password</button>
+      </div>
+    </div>
+    <div class="rounded-2xl p-6" style="background:rgba(255,255,255,0.08);border:1px solid rgba(34,197,94,0.3);">
+      <h3 class="font-bold text-lg mb-6" style="color:#22c55e;">📦 Order History</h3>
+      <div id="db-orders"></div>
+    </div>
+    <div class="text-center mt-8"><a href="#products" class="inline-block px-8 py-3 rounded-full font-bold transition hover:scale-105" style="background:#22c55e;color:#0d3320;">← Back to Shopping</a></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 py-16">
+  <div class="max-w-4xl mx-auto text-center rounded-3xl p-8 md:p-12" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
+    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4" style="color:#fff;">Ready to Go Eco?</h2>
+    <p class="text-lg mb-8" style="color:rgba(255,255,255,0.9);">Join hundreds of businesses choosing sustainable packaging.</p>
+    <button id="create-account-btn" class="px-10 py-4 rounded-full font-bold text-lg transition hover:scale-105" style="background:#0d3320;color:#fff;border:none;cursor:pointer;">Create Your Account →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-6 py-8 border-t" style="border-color:rgba(255,255,255,0.1);">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:#22c55e;"><svg class="w-5 h-5" style="color:#0d3320;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+      <span class="font-bold" style="color:#fff;">EcoServe</span>
+    </div>
+    <p class="text-sm" style="color:#bbf7d0;">© 2024 EcoServe. Sustainable packaging for a greener future.</p>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div id="auth-modal" class="hidden fixed inset-0 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.75);z-index:1000;">
+  <div id="auth-box" class="rounded-3xl p-8 max-w-md w-full relative" style="background:linear-gradient(135deg,#0d3320,#1a5c3a);border:1px solid rgba(34,197,94,0.3);">
+    <button id="close-auth" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full transition hover:bg-white/10 text-xl" style="color:#22c55e;background:none;border:none;cursor:pointer;">✕</button>
+    <!-- Step dots -->
+    <div class="flex items-center gap-3 mb-6">
+      <div id="dot1" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#22c55e;color:#0d3320;">1</div>
+      <div id="dot-line" class="flex-1 h-1 rounded" style="background:rgba(34,197,94,0.2);"></div>
+      <div id="dot2" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:rgba(34,197,94,0.2);color:#22c55e;">2</div>
+    </div>
+    <!-- Step 1 -->
+    <div id="auth-step1">
+      <h2 class="font-display text-2xl font-bold mb-1" style="color:#fff;">Create Account</h2>
+      <p class="text-sm mb-6" style="color:#bbf7d0;">Step 1 of 2 — Your details</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Full Name *</label><input id="s-name" type="text" placeholder="Your Full Name" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+        <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Email *</label><input id="s-email" type="email" placeholder="your@email.com" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+        <div id="s1-err" class="hidden rounded-lg p-3 text-sm" style="background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);"></div>
+        <button id="s1-next" class="w-full px-6 py-3 rounded-lg font-bold text-lg transition hover:scale-105" style="background:#22c55e;color:#0d3320;border:none;cursor:pointer;">Continue →</button>
+      </div>
+      <p class="text-center mt-5 text-sm" style="color:#bbf7d0;">Already have an account? <a href="#" id="go-login" style="color:#22c55e;text-decoration:underline;">Sign In</a></p>
+    </div>
+    <!-- Step 2 -->
+    <div id="auth-step2" class="hidden">
+      <h2 class="font-display text-2xl font-bold mb-1" style="color:#fff;">Set Credentials</h2>
+      <p class="text-sm mb-6" style="color:#bbf7d0;">Step 2 of 2 — Username &amp; password</p>
+      <div class="space-y-4">
+        <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Username *</label><input id="s-user" type="text" placeholder="Choose a username" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+        <div>
+          <label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Password *</label>
+          <div class="relative">
+            <input id="s-pw" type="password" placeholder="Min 6 characters" class="w-full px-4 py-3 pr-12 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;">
+            <button type="button" id="tog-pw1" class="absolute right-3 top-1/2 -translate-y-1/2" style="background:none;border:none;cursor:pointer;color:rgba(187,247,208,0.6);font-size:1.1rem;">👁</button>
+          </div>
+          <div class="mt-2 h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1);"><div id="pw-bar" class="h-full rounded-full bar-t" style="width:0%;background:#ef4444;"></div></div>
+          <p id="pw-lbl" class="text-xs mt-1" style="color:rgba(187,247,208,0.6);">Enter a password</p>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Confirm Password *</label>
+          <div class="relative">
+            <input id="s-pw2" type="password" placeholder="Confirm your password" class="w-full px-4 py-3 pr-12 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;">
+            <button type="button" id="tog-pw2" class="absolute right-3 top-1/2 -translate-y-1/2" style="background:none;border:none;cursor:pointer;color:rgba(187,247,208,0.6);font-size:1.1rem;">👁</button>
+          </div>
+        </div>
+        <div id="s2-err" class="hidden rounded-lg p-3 text-sm" style="background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);"></div>
+        <div id="s2-ok" class="hidden rounded-lg p-3 text-sm" style="background:rgba(34,197,94,0.2);color:#bbf7d0;border:1px solid rgba(34,197,94,0.3);">✅ Account created! Welcome to EcoServe.</div>
+        <div class="flex gap-3">
+          <button id="s2-back" class="px-6 py-3 rounded-lg font-semibold transition hover:opacity-80" style="background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3);cursor:pointer;">← Back</button>
+          <button id="s2-submit" class="flex-1 px-6 py-3 rounded-lg font-bold text-lg transition hover:scale-105" style="background:#22c55e;color:#0d3320;border:none;cursor:pointer;">Create Account 🌱</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal" class="hidden fixed inset-0 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.75);z-index:1000;">
+  <div id="login-box" class="rounded-3xl p-8 max-w-md w-full relative" style="background:linear-gradient(135deg,#0d3320,#1a5c3a);border:1px solid rgba(34,197,94,0.3);">
+    <button id="close-login" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full transition hover:bg-white/10 text-xl" style="color:#22c55e;background:none;border:none;cursor:pointer;">✕</button>
+    <h2 class="font-display text-2xl font-bold mb-1" style="color:#fff;">Sign In</h2>
+    <p class="text-sm mb-6" style="color:#bbf7d0;">Welcome back to EcoServe</p>
+    <div class="space-y-4">
+      <div><label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Email or Username *</label><input id="l-id" type="text" placeholder="Email or username" class="w-full px-4 py-3 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;"></div>
+      <div>
+        <label class="block text-sm font-semibold mb-2" style="color:#bbf7d0;">Password *</label>
+        <div class="relative">
+          <input id="l-pw" type="password" placeholder="Your password" class="w-full px-4 py-3 pr-12 rounded-lg border" style="border-color:rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;">
+          <button type="button" id="tog-lpw" class="absolute right-3 top-1/2 -translate-y-1/2" style="background:none;border:none;cursor:pointer;color:rgba(187,247,208,0.6);font-size:1.1rem;">👁</button>
+        </div>
+      </div>
+      <div id="l-err" class="hidden rounded-lg p-3 text-sm" style="background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);"></div>
+      <button id="l-submit" class="w-full px-6 py-3 rounded-lg font-bold text-lg transition hover:scale-105" style="background:#22c55e;color:#0d3320;border:none;cursor:pointer;">Sign In</button>
+    </div>
+    <p class="text-center mt-5 text-sm" style="color:#bbf7d0;">Don't have an account? <a href="#" id="go-signup" style="color:#22c55e;text-decoration:underline;">Create one</a></p>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── API Config — change this URL when you deploy the backend ─────────────────
+var API = 'http://localhost:5000/api';
+
+// ── Products & Bulk Tiers ────────────────────────────────────────────────────
+var PRODUCTS = [
+  { name:'Paper Cups',             price:0.80, icon:'☕',  desc:'' },
+  { name:'Food Boxes',             price:3.50, icon:'📦',  desc:'' },
+  { name:'Carry Bags',             price:2.00, icon:'🛍️', desc:'' },
+  { name:'Containers',             price:4.00, icon:'🥡',  desc:'' },
+  { name:'Cutlery',                price:0.50, icon:'🍴',  desc:'' },
+  { name:'Straws',                 price:0.30, icon:'🥤',  desc:'' },
+  { name:'Labels & Stickers',      price:0.40, icon:'🏷️', desc:'' },
+  { name:'Napkins & Tissues',      price:0.25, icon:'🧴',  desc:'' },
+  { name:'Areca Leaf Plates',      price:5.50, icon:'🍃',  desc:'Natural palm leaf. Compostable in 60 days.' },
+  { name:'Bamboo Toothpicks',      price:0.10, icon:'🎋',  desc:'FSC-certified. Splinter-free, wrapped.' },
+  { name:'Corn-Starch Bags',       price:1.80, icon:'🌽',  desc:'PLA corn starch. Zero microplastics.' },
+  { name:'Sugarcane Bagasse Bowl', price:4.20, icon:'🥣',  desc:'Microwave safe, leakproof, compostable.' },
+  { name:'Beeswax Wraps',          price:8.00, icon:'🍯',  desc:'Organic cotton + beeswax. Reusable 200x.' },
+  { name:'Seaweed Sachets',        price:2.60, icon:'🌊',  desc:'Edible & dissolvable. For sauces & dips.' }
+];
+
+var BULK = [
+  { min:10000, pct:10 },
+  { min:5000,  pct:7  },
+  { min:2000,  pct:5  },
+  { min:1000,  pct:3  }
+];
+
+var selPay = '';
+
+// ── API helpers ───────────────────────────────────────────────────────────────
+function getToken() { return localStorage.getItem('es_token'); }
+function getUser()  { return JSON.parse(localStorage.getItem('es_user') || 'null'); }
+
+async function apiCall(method, endpoint, body) {
+  var opts = { method: method, headers: { 'Content-Type': 'application/json' } };
+  var token = getToken();
+  if (token) opts.headers['Authorization'] = 'Bearer ' + token;
+  if (body)  opts.body = JSON.stringify(body);
+  var res  = await fetch(API + endpoint, opts);
+  var data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Request failed');
+  return data;
+}
+
+function setSession(token, user) {
+  localStorage.setItem('es_token', token);
+  localStorage.setItem('es_user',  JSON.stringify(user));
+}
+function clearSession() {
+  localStorage.removeItem('es_token');
+  localStorage.removeItem('es_user');
+}
+
+// ── Build product grid ────────────────────────────────────────────────────────
+var pgrid = document.getElementById('product-grid');
+PRODUCTS.forEach(function(p, i) {
+  var div = document.createElement('div');
+  div.className = 'pcard rounded-lg p-4';
+  div.setAttribute('style', 'background:rgba(255,255,255,0.05);border:1px solid rgba(34,197,94,0.3);');
+  div.innerHTML =
+    '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;">' +
+      '<input type="checkbox" class="pchk" data-i="' + i + '" data-price="' + p.price + '" style="width:18px;height:18px;accent-color:#22c55e;flex-shrink:0;">' +
+      '<span style="color:#fff;font-weight:600;">' + p.icon + ' ' + p.name + '</span>' +
+      '<span style="margin-left:auto;color:#22c55e;font-weight:700;font-size:0.85rem;white-space:nowrap;">₹' + p.price.toFixed(2) + '/pc</span>' +
+    '</label>' +
+    (p.desc ? '<p style="color:rgba(187,247,208,0.65);font-size:0.75rem;margin-top:4px;">' + p.desc + '</p>' : '') +
+    '<div style="display:flex;align-items:center;gap:8px;margin-top:10px;">' +
+      '<button type="button" class="qm" style="width:32px;height:32px;border-radius:50%;font-size:1.2rem;font-weight:bold;background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid rgba(34,197,94,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;">−</button>' +
+      '<input type="number" class="pqty" min="0" value="0" style="flex:1;padding:6px 8px;border-radius:6px;border:1px solid rgba(34,197,94,0.3);background:rgba(255,255,255,0.05);color:#fff;text-align:center;">' +
+      '<button type="button" class="qp" style="width:32px;height:32px;border-radius:50%;font-size:1.2rem;font-weight:bold;background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid rgba(34,197,94,0.4);cursor:pointer;display:flex;align-items:center;justify-content:center;">+</button>' +
+    '</div>';
+  pgrid.appendChild(div);
+});
+
+// ── Calculator ────────────────────────────────────────────────────────────────
+function recalc() {
+  var chks = document.querySelectorAll('.pchk');
+  var qtys = document.querySelectorAll('.pqty');
+  var sub = 0;
+  var lines = [];
+  for (var i = 0; i < chks.length; i++) {
+    var q = Math.max(0, parseFloat(qtys[i].value) || 0);
+    if (chks[i].checked && q > 0) {
+      var price = parseFloat(chks[i].dataset.price);
+      var amt = q * price;
+      sub += amt;
+      lines.push({ label: PRODUCTS[i].icon + ' ' + PRODUCTS[i].name + ' × ' + q, amt: amt });
+    }
+  }
+  var disc = 0;
+  for (var j = 0; j < BULK.length; j++) {
+    if (sub >= BULK[j].min) { disc = sub * BULK[j].pct / 100; break; }
+  }
+  var after = sub - disc;
+  var gst   = after * 0.18;
+  var total = after + gst;
+
+  var bd = document.getElementById('item-breakdown');
+  var em = document.getElementById('empty-msg');
+  if (lines.length === 0) {
+    bd.innerHTML = '';
+    bd.appendChild(em);
+    em.style.display = 'block';
+  } else {
+    em.style.display = 'none';
+    bd.innerHTML = lines.map(function(l) {
+      return '<div style="display:flex;justify-content:space-between;font-size:0.875rem;padding:4px 0;border-bottom:1px solid rgba(34,197,94,0.1);">' +
+        '<span style="color:#bbf7d0;">' + l.label + '</span>' +
+        '<span style="color:#fff;font-weight:500;">₹' + l.amt.toFixed(2) + '</span></div>';
+    }).join('');
+  }
+
+  document.getElementById('sum-subtotal').textContent = '₹' + sub.toFixed(2);
+  document.getElementById('sum-gst').textContent = '₹' + gst.toFixed(2);
+
+  var dr = document.getElementById('sum-discount-row');
+  if (disc > 0) {
+    dr.style.display = 'flex';
+    document.getElementById('sum-discount').textContent = '-₹' + disc.toFixed(2);
+  } else {
+    dr.style.display = 'none';
+  }
+
+  var tot = document.getElementById('sum-total');
+  tot.textContent = '₹' + total.toFixed(2);
+  tot.classList.remove('bump');
+  void tot.offsetWidth;
+  tot.classList.add('bump');
+
+  var nudge = document.getElementById('bulk-nudge');
+  var nextT = null;
+  for (var k = BULK.length - 1; k >= 0; k--) {
+    if (sub < BULK[k].min) { nextT = BULK[k]; break; }
+  }
+  if (nextT && sub > 0) {
+    nudge.style.display = 'block';
+    nudge.textContent = '🎯 Add ₹' + (nextT.min - sub).toFixed(2) + ' more to unlock ' + nextT.pct + '% bulk discount!';
+  } else {
+    nudge.style.display = 'none';
+  }
+}
+
+// Grid events
+pgrid.addEventListener('change', function(e) {
+  if (e.target.classList.contains('pchk')) recalc();
+});
+pgrid.addEventListener('input', function(e) {
+  if (e.target.classList.contains('pqty')) {
+    var card = e.target.closest('.pcard');
+    var cb = card.querySelector('.pchk');
+    cb.checked = parseFloat(e.target.value) > 0;
+    recalc();
+  }
+});
+pgrid.addEventListener('click', function(e) {
+  var card = e.target.closest('.pcard');
+  if (!card) return;
+  var inp = card.querySelector('.pqty');
+  var cb  = card.querySelector('.pchk');
+  if (e.target.classList.contains('qp')) {
+    inp.value = (parseFloat(inp.value) || 0) + 1;
+    cb.checked = true;
+    recalc();
+  }
+  if (e.target.classList.contains('qm')) {
+    var v = Math.max(0, (parseFloat(inp.value) || 0) - 1);
+    inp.value = v;
+    if (v === 0) cb.checked = false;
+    recalc();
+  }
+});
+
+// Payment selection
+document.querySelectorAll('.pay-opt').forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    document.querySelectorAll('.pay-opt').forEach(function(o) {
+      o.style.borderColor = 'rgba(34,197,94,0.3)';
+      o.style.background  = 'rgba(255,255,255,0.05)';
+    });
+    opt.style.borderColor = '#22c55e';
+    opt.style.background  = 'rgba(34,197,94,0.15)';
+    selPay = opt.dataset.val;
+  });
+});
+
+// Clear
+document.getElementById('clear-order').addEventListener('click', function() {
+  document.querySelectorAll('.pqty').forEach(function(i) { i.value = 0; });
+  document.querySelectorAll('.pchk').forEach(function(c) { c.checked = false; });
+  document.querySelectorAll('.pay-opt').forEach(function(o) { o.style.borderColor='rgba(34,197,94,0.3)'; o.style.background='rgba(255,255,255,0.05)'; });
+  selPay = '';
+  recalc();
+});
+
+// Submit order → POST /api/orders
+document.getElementById('submit-order').addEventListener('click', async function() {
+  if (!getToken()) { openLogin(); return; }
+  if (!selPay) { alert('Please select a payment method.'); return; }
+
+  var chks = document.querySelectorAll('.pchk');
+  var qtys = document.querySelectorAll('.pqty');
+  var items = [];
+  for (var i = 0; i < chks.length; i++) {
+    var q = Math.max(0, parseFloat(qtys[i].value) || 0);
+    if (chks[i].checked && q > 0) {
+      items.push({ name: PRODUCTS[i].name, icon: PRODUCTS[i].icon, qty: q, price: parseFloat(chks[i].dataset.price), amt: q * parseFloat(chks[i].dataset.price) });
+    }
+  }
+  if (!items.length) { alert('Please select at least one product.'); return; }
+
+  var btn = document.getElementById('submit-order');
+  btn.textContent = 'Placing order…';
+  btn.disabled = true;
+
+  try {
+    var data = await apiCall('POST', '/orders', {
+      businessName:  document.getElementById('f-biz').value,
+      contactPerson: document.getElementById('f-contact').value,
+      email:         document.getElementById('f-email').value,
+      phone:         document.getElementById('f-phone').value,
+      city:          document.getElementById('f-city').value,
+      gstNumber:     document.getElementById('f-gst').value,
+      paymentMethod: selPay,
+      items: items
+    });
+
+    var o = data.order;
+    document.getElementById('checkout-wrap').classList.add('hidden');
+    document.getElementById('success-message').classList.remove('hidden');
+
+    var html = '<strong>Order ID:</strong> ' + o.orderId + '<br><strong>Business:</strong> ' + o.businessName + '<br><strong>Payment:</strong> ' + o.paymentMethod + '<br><br><strong>Items:</strong><br>';
+    o.items.forEach(function(it) { html += it.name + ': ' + it.qty + ' × ₹' + it.price + ' = ₹' + it.amt.toFixed(2) + '<br>'; });
+    html += '<br><strong>Subtotal:</strong> ₹' + o.subtotal.toFixed(2) + '<br>';
+    if (o.discount > 0) html += '<strong>Discount:</strong> -₹' + o.discount.toFixed(2) + '<br>';
+    html += '<strong>GST:</strong> ₹' + o.gst.toFixed(2) + '<br><strong style="color:#22c55e;">Total: ₹' + o.total.toFixed(2) + '</strong>';
+    document.getElementById('order-details').innerHTML = html;
+    setTimeout(function() { document.getElementById('success-message').scrollIntoView({behavior:'smooth'}); }, 100);
+  } catch(err) {
+    alert('❌ ' + err.message);
+    btn.textContent = 'Proceed to Payment →';
+    btn.disabled = false;
+  }
+});
+
+// ── Auth modals ───────────────────────────────────────────────────────────────
+function showModal(id) {
+  document.getElementById('auth-modal').classList.add('hidden');
+  document.getElementById('login-modal').classList.add('hidden');
+  var modal = document.getElementById(id);
+  modal.classList.remove('hidden');
+  var box = id === 'auth-modal' ? document.getElementById('auth-box') : document.getElementById('login-box');
+  box.classList.remove('modal-in');
+  void box.offsetWidth;
+  box.classList.add('modal-in');
+}
+
+function openAuth() {
+  goStep(1);
+  showModal('auth-modal');
+}
+function openLogin() {
+  showModal('login-modal');
+}
+
+function goStep(n) {
+  var s1 = document.getElementById('auth-step1');
+  var s2 = document.getElementById('auth-step2');
+  var d1 = document.getElementById('dot1');
+  var d2 = document.getElementById('dot2');
+  var ln = document.getElementById('dot-line');
+  if (n === 1) {
+    s1.classList.remove('hidden'); s1.classList.add('step-in');
+    s2.classList.add('hidden');
+    d1.style.background = '#22c55e'; d1.style.color = '#0d3320';
+    d2.style.background = 'rgba(34,197,94,0.2)'; d2.style.color = '#22c55e';
+    ln.style.background = 'rgba(34,197,94,0.2)';
+  } else {
+    s2.classList.remove('hidden'); s2.classList.add('step-in');
+    s1.classList.add('hidden');
+    d1.style.background = '#16a34a'; d1.style.color = '#fff';
+    d2.style.background = '#22c55e'; d2.style.color = '#0d3320';
+    ln.style.background = '#22c55e';
+  }
+}
+
+// Step 1 next
+document.getElementById('s1-next').addEventListener('click', function() {
+  var name  = document.getElementById('s-name').value.trim();
+  var email = document.getElementById('s-email').value.trim();
+  var err   = document.getElementById('s1-err');
+  err.classList.add('hidden');
+  if (!name) { err.textContent = '❌ Please enter your full name.'; err.classList.remove('hidden'); return; }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { err.textContent = '❌ Enter a valid email address.'; err.classList.remove('hidden'); return; }
+  if (users.some(function(u) { return u.email === email; })) { err.textContent = '❌ Email already registered. Sign in instead.'; err.classList.remove('hidden'); return; }
+  goStep(2);
+  setTimeout(function() { document.getElementById('s-user').focus(); }, 100);
+});
+
+// Step 2 back
+document.getElementById('s2-back').addEventListener('click', function() { goStep(1); });
+
+// Password strength
+document.getElementById('s-pw').addEventListener('input', function() {
+  var pw = this.value;
+  var sc = 0;
+  if (pw.length >= 6) sc++;
+  if (pw.length >= 10) sc++;
+  if (/[A-Z]/.test(pw)) sc++;
+  if (/[0-9]/.test(pw)) sc++;
+  if (/[^A-Za-z0-9]/.test(pw)) sc++;
+  var pct   = (sc / 5) * 100;
+  var color = sc <= 1 ? '#ef4444' : sc <= 2 ? '#f97316' : sc <= 3 ? '#eab308' : '#22c55e';
+  var lbl   = sc <= 1 ? 'Weak' : sc <= 2 ? 'Fair' : sc <= 3 ? 'Good' : 'Strong 💪';
+  document.getElementById('pw-bar').style.width = pct + '%';
+  document.getElementById('pw-bar').style.background = color;
+  document.getElementById('pw-lbl').textContent = pw ? lbl : 'Enter a password';
+  document.getElementById('pw-lbl').style.color = pw ? color : 'rgba(187,247,208,0.6)';
+});
+
+// Show/hide password toggles
+[['tog-pw1','s-pw'],['tog-pw2','s-pw2'],['tog-lpw','l-pw']].forEach(function(pair) {
+  var btn = document.getElementById(pair[0]);
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var inp = document.getElementById(pair[1]);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+  });
+});
+
+// Step 2 create account → POST /api/auth/register
+document.getElementById('s2-submit').addEventListener('click', async function() {
+  var uname = document.getElementById('s-user').value.trim();
+  var pw    = document.getElementById('s-pw').value;
+  var pw2   = document.getElementById('s-pw2').value;
+  var err   = document.getElementById('s2-err');
+  var ok    = document.getElementById('s2-ok');
+  err.classList.add('hidden'); ok.classList.add('hidden');
+  if (!uname)      { err.textContent = '❌ Please choose a username.';             err.classList.remove('hidden'); return; }
+  if (pw.length<6) { err.textContent = '❌ Password must be at least 6 chars.';   err.classList.remove('hidden'); return; }
+  if (pw !== pw2)  { err.textContent = '❌ Passwords do not match.';              err.classList.remove('hidden'); return; }
+
+  var btn = document.getElementById('s2-submit');
+  btn.textContent = 'Creating…'; btn.disabled = true;
+
+  try {
+    var data = await apiCall('POST', '/auth/register', {
+      fullName: document.getElementById('s-name').value.trim(),
+      email:    document.getElementById('s-email').value.trim(),
+      username: uname,
+      password: pw
+    });
+    setSession(data.token, data.user);
+    ok.classList.remove('hidden');
+    ['s-name','s-email','s-user','s-pw','s-pw2'].forEach(function(id) { document.getElementById(id).value = ''; });
+    document.getElementById('pw-bar').style.width = '0%';
+    document.getElementById('pw-lbl').textContent = 'Enter a password';
+    updateNav();
+    setTimeout(function() {
+      document.getElementById('auth-modal').classList.add('hidden');
+      ok.classList.add('hidden');
+      showDashboard();
+    }, 1400);
+  } catch(e) {
+    err.textContent = '❌ ' + e.message;
+    err.classList.remove('hidden');
+    btn.textContent = 'Create Account 🌱'; btn.disabled = false;
+  }
+});
+
+// Login → POST /api/auth/login
+document.getElementById('l-submit').addEventListener('click', async function() {
+  var id  = document.getElementById('l-id').value.trim();
+  var pw  = document.getElementById('l-pw').value;
+  var err = document.getElementById('l-err');
+  err.classList.add('hidden');
+  if (!id || !pw) { err.textContent = '❌ Please fill in all fields.'; err.classList.remove('hidden'); return; }
+
+  var btn = document.getElementById('l-submit');
+  btn.textContent = 'Signing in…'; btn.disabled = true;
+
+  try {
+    var data = await apiCall('POST', '/auth/login', { identifier: id, password: pw });
+    setSession(data.token, data.user);
+    updateNav();
+    document.getElementById('login-modal').classList.add('hidden');
+    document.getElementById('l-id').value = '';
+    document.getElementById('l-pw').value = '';
+    showDashboard();
+  } catch(e) {
+    err.textContent = '❌ ' + e.message;
+    err.classList.remove('hidden');
+    btn.textContent = 'Sign In'; btn.disabled = false;
+  }
+});
+
+// Close modals
+document.getElementById('close-auth').addEventListener('click', function() { document.getElementById('auth-modal').classList.add('hidden'); });
+document.getElementById('close-login').addEventListener('click', function() { document.getElementById('login-modal').classList.add('hidden'); });
+document.getElementById('auth-modal').addEventListener('click', function(e) { if (e.target === this) this.classList.add('hidden'); });
+document.getElementById('login-modal').addEventListener('click', function(e) { if (e.target === this) this.classList.add('hidden'); });
+
+// Switchers
+document.getElementById('go-login').addEventListener('click', function(e) { e.preventDefault(); openLogin(); });
+document.getElementById('go-signup').addEventListener('click', function(e) { e.preventDefault(); openAuth(); });
+
+// Triggers
+document.getElementById('nav-cta').addEventListener('click', openAuth);
+document.getElementById('create-account-btn').addEventListener('click', openAuth);
+document.getElementById('hero-cta').addEventListener('click', function() { document.getElementById('orders').scrollIntoView({behavior:'smooth'}); });
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+function updateNav() {
+  var u = getUser();
+  if (u && getToken()) {
+    document.getElementById('user-menu').classList.remove('hidden');
+    document.getElementById('nav-cta').classList.add('hidden');
+    document.getElementById('user-name-display').textContent = u.fullName.split(' ')[0];
+  } else {
+    document.getElementById('user-menu').classList.add('hidden');
+    document.getElementById('nav-cta').classList.remove('hidden');
+  }
+}
+
+document.getElementById('user-profile-btn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('user-dropdown').classList.toggle('hidden');
+});
+document.getElementById('dashboard-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('user-dropdown').classList.add('hidden');
+  showDashboard();
+});
+document.getElementById('logout-btn').addEventListener('click', function() {
+  clearSession();
+  document.getElementById('user-dropdown').classList.add('hidden');
+  document.getElementById('dashboard').classList.add('hidden');
+  updateNav();
+  location.reload();
+});
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('user-dropdown');
+  if (!dd.contains(e.target) && !document.getElementById('user-profile-btn').contains(e.target))
+    dd.classList.add('hidden');
+});
+
+// ── Dashboard ─────────────────────────────────────────────────────────────────
+async function showDashboard() {
+  var u = getUser();
+  if (!u || !getToken()) return;
+
+  document.getElementById('db-name').textContent     = u.fullName;
+  document.getElementById('db-email').textContent    = u.email;
+  document.getElementById('db-username').textContent = u.username;
+  document.getElementById('db-since').textContent    = new Date(u.createdAt || Date.now()).toLocaleDateString();
+
+  var el = document.getElementById('db-orders');
+  el.innerHTML = '<p style="color:#bbf7d0;">Loading orders…</p>';
+  document.getElementById('db-count').textContent = '…';
+  document.getElementById('db-spent').textContent = '₹…';
+  document.getElementById('dashboard').classList.remove('hidden');
+  setTimeout(function() { document.getElementById('dashboard').scrollIntoView({behavior:'smooth'}); }, 100);
+
+  try {
+    var data = await apiCall('GET', '/orders');
+    var ords = data.orders || [];
+    document.getElementById('db-count').textContent = ords.length;
+    document.getElementById('db-spent').textContent = '₹' + ords.reduce(function(s,o){return s+o.total;},0).toFixed(2);
+    if (ords.length === 0) {
+      el.innerHTML = '<p style="color:#bbf7d0;">No orders yet. <a href="#orders" style="color:#22c55e;text-decoration:underline;">Place your first order →</a></p>';
+    } else {
+      el.innerHTML = ords.map(function(o) {
+        return '<div style="background:rgba(255,255,255,0.05);border:1px solid rgba(34,197,94,0.2);border-radius:8px;padding:16px;margin-bottom:12px;">' +
+          '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">' +
+          '<div><p style="color:#fff;font-weight:600;">' + o.orderId + '</p><p style="color:#bbf7d0;font-size:0.875rem;">' + new Date(o.createdAt).toLocaleDateString() + '</p></div>' +
+          '<p style="color:#22c55e;font-weight:700;">₹' + o.total.toFixed(2) + '</p></div>' +
+          '<p style="color:#bbf7d0;font-size:0.875rem;">' + o.items.length + ' item(s) · ' + o.paymentMethod + ' · <span style="text-transform:capitalize;">' + o.status + '</span></p></div>';
+      }).join('');
+    }
+  } catch(e) {
+    el.innerHTML = '<p style="color:#fca5a5;">Could not load orders. Is the server running?</p>';
+  }
+}
+
+// ── Smooth scroll ─────────────────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(fu
